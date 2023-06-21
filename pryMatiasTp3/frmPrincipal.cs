@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms;
+
 
 namespace pryMatiasTp3
 {
@@ -102,7 +102,7 @@ namespace pryMatiasTp3
 
                 if (Localidades.Local == Localidad)
                 {
-                    MessageBox.Show("El ID ingresado ya existe.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("El Id ingresado ya esta registrado.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
@@ -135,7 +135,7 @@ namespace pryMatiasTp3
                 Profesiones.Buscar(IDProfesionBuscada);
                 if (Profesiones.Prof == IDProfesionBuscada)
                 {
-                    MessageBox.Show("El ID ingresado ya existe.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("El Id ingresado ya esta registrado.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
