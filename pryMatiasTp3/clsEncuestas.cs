@@ -11,7 +11,7 @@ namespace pryMatiasTp3
 {
     internal class clsEncuestas
     {
-        private OleDbConnection Conector;
+        private OleDbConnection Conector;//Elementos que voy utilizar 
         private OleDbCommand Comando;
         private OleDbDataAdapter Adaptador;
         private DataTable Tabla;
@@ -36,12 +36,13 @@ namespace pryMatiasTp3
             Tabla.PrimaryKey = dc;
         }
 
-        public DataTable getAll()
+        public DataTable getAll()// para que volvamos a la tabla 
         {
             return Tabla;
         }
 
-        public bool Registrar(Int32 localidad, Int32 profesion, Int32 cantidad)
+        
+        public bool Registrar(Int32 localidad, Int32 profesion, Int32 cantidad)//aca registra todo localidad empleo y cantidad
         {
             bool valor = true;
 

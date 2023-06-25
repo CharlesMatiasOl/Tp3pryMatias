@@ -15,13 +15,13 @@ namespace pryMatiasTp3
     {
 
 
-        private OleDbConnection Conector;
+        private OleDbConnection Conector;//Elementos que voy utilizar
         private OleDbCommand Comando;
         private OleDbDataAdapter Adaptador;
         private DataTable Tabla;
 
 
-        private string NombreDeLaProfesion;
+        private string NombreDeLaProfesion;//las variables
         private int IDProfesion;
 
         public string Profesion
@@ -36,7 +36,8 @@ namespace pryMatiasTp3
             set { IDProfesion = value; }
         }
 
-        public clsProfesion()
+
+        public clsProfesion()// 
         {
             string cadena = "provider=microsoft.jet.oledb.4.0;data source=TP.mdb";
             Conector = new OleDbConnection(cadena);
@@ -54,7 +55,9 @@ namespace pryMatiasTp3
             dc[0] = Tabla.Columns["profesion"];
             Tabla.PrimaryKey = dc;
         }
-        public string BuscarProfesion(int profesion)
+
+
+        public string BuscarProfesion(int profesion)//Procedimiento buscar 
         {
             DataRow Buscador = Tabla.Rows.Find(profesion);
 
@@ -68,19 +71,17 @@ namespace pryMatiasTp3
             }
             return NombreDeLaProfesion;
         }
-        public DataTable getAll()
-        {
-            return Tabla;
-        }
+       
 
         
 
-        public void ListarProfesiones(System.Windows.Forms.ComboBox CB)
+        public void ListarProfesiones(System.Windows.Forms.ComboBox Combo)//Listar la informacion en la tabla 
         {
-            CB.DisplayMember = "nombre";
-            CB.ValueMember = "profesion";
-            CB.DataSource = Tabla;
+            Combo.DisplayMember = "nombre";
+            Combo.ValueMember = "profesion";
+            Combo.DataSource = Tabla;
         }
+
 
         public void RegistroProfesion()
         {
@@ -104,7 +105,8 @@ namespace pryMatiasTp3
         }
 
 
-        public void Buscar(Int32 IDProfesionBuscada)
+
+        public void Buscar(Int32 ProfesionBuscar)
         {
             try
             {
@@ -115,7 +117,7 @@ namespace pryMatiasTp3
                 {
                     while (Lector.Read())
                     {
-                        if (Lector.GetInt32(0) == IDProfesionBuscada)
+                        if (Lector.GetInt32(0) == ProfesionBuscar)
                         {
                             IDProfesion = Lector.GetInt32(0);
                         }
@@ -128,6 +130,11 @@ namespace pryMatiasTp3
                 MessageBox.Show(e.ToString());
             }
 
+        }
+
+        public DataTable getAll()// Para que volvamos a la tabla
+        {
+            return Tabla;
         }
 
 

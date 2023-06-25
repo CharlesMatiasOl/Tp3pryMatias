@@ -89,6 +89,7 @@ namespace pryMatiasTp3
 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
+            
         }
 
         private void btnAgregarL_Click(object sender, EventArgs e)
@@ -106,12 +107,12 @@ namespace pryMatiasTp3
                 }
                 else
                 {
-                    Localidades.Localidad = txtNombreLocalidad.Text;
+                    Localidades.IdLocalidad = txtNombreLocalidad.Text;
                     Localidades.Local = Convert.ToInt32(txtLocalidad.Text);
                     Localidades.RegistroDeLocalidad();
 
                     Localidades.ListarLocalidades(cbLocalidad);
-                    cbLocalidad.SelectedIndex = -1;//Si no pongo esto se selecciona un item luego de cargar la info
+                    cbLocalidad.SelectedIndex = -1;
 
                     txtNombreLocalidad.Text = "";
                     txtLocalidad.Text = "";
@@ -120,7 +121,7 @@ namespace pryMatiasTp3
             }
             catch (Exception)
             {
-                MessageBox.Show("Problemas con la base de datos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Problemas en la base", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
@@ -144,7 +145,7 @@ namespace pryMatiasTp3
                     Profesiones.RegistroProfesion();
 
                     Profesiones.ListarProfesiones(cbProfesion);
-                    cbProfesion.SelectedIndex = -1;//Si no pongo esto se selecciona un item luego de cargar la info
+                    cbProfesion.SelectedIndex = -1;
 
                     txtNombreProfesion.Text = "";
                     txtProfesion.Text = "";
@@ -153,7 +154,7 @@ namespace pryMatiasTp3
             }
             catch (Exception)
             {
-                MessageBox.Show("Problemas con la base de datos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Problemas en la base", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
@@ -174,7 +175,7 @@ namespace pryMatiasTp3
             }
             catch (Exception)
             {
-                MessageBox.Show("Problemas con la base de datos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Problemas en la base", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
 
         }
@@ -235,9 +236,12 @@ namespace pryMatiasTp3
             }
             catch (Exception)
             {
-                MessageBox.Show("Problemas con la base de datos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Problemas en la base", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 this.Close();
             }
         }
+
     }
+
 }
+

@@ -13,15 +13,15 @@ namespace pryMatiasTp3
 {
     internal class clsLocalidad
     {
-        private OleDbConnection Conector;
+        private OleDbConnection Conector;//elementos que utilizo 
         private OleDbCommand Comando;
         private OleDbDataAdapter Adaptador;
         private DataTable Tabla;
 
-        private string NombreDeLocalidad;
-        private int IDLocalidad;
+        private string NombreDeLocalidad;//variables
+        private int Localidad;
 
-        public string Localidad
+        public string IdLocalidad
         {
             get { return NombreDeLocalidad; }
             set { NombreDeLocalidad = value; }
@@ -29,8 +29,8 @@ namespace pryMatiasTp3
 
         public Int32 Local
         {
-            get { return IDLocalidad; }
-            set { IDLocalidad = value; }
+            get { return Localidad; }
+            set { Localidad = value; }
         }
 
         public clsLocalidad()
@@ -52,7 +52,7 @@ namespace pryMatiasTp3
             Tabla.PrimaryKey = dc;
         }
 
-        public string BuscarLocalidad(int Localidad)
+        public string BuscarLocalidad(int Localidad)//procedimiento de busqueda 
         {
             DataRow Buscador = Tabla.Rows.Find(Localidad);
 
@@ -68,24 +68,26 @@ namespace pryMatiasTp3
             return NombreDeLocalidad;
         }
 
-        public DataTable getAll()
+        
+
+
+        public void ListarLocalidades(System.Windows.Forms.ComboBox Combo)// envio la informacion a la tabla 
         {
-            return Tabla;
+            Combo.DisplayMember = "nombre";
+            Combo.ValueMember = "localidad";
+            Combo.DataSource = Tabla;
         }
-        public void ListarLocalidades(System.Windows.Forms.ComboBox CB)
+
+
+
+        public void RegistroDeLocalidad()//Procedimiento registro 
         {
-            CB.DisplayMember = "nombre";
-            CB.ValueMember = "localidad";
-            CB.DataSource = Tabla;
-        }
-        public void RegistroDeLocalidad()
-        {
-            DataRow BuscarFila = Tabla.Rows.Find(IDLocalidad);
+            DataRow BuscarFila = Tabla.Rows.Find(Localidad);
 
             if (BuscarFila == null)
             {
                 DataRow Fila = Tabla.NewRow();
-                Fila["localidad"] = IDLocalidad;
+                Fila["localidad"] = Localidad;
                 Fila["nombre"] = NombreDeLocalidad;
                 Tabla.Rows.Add(Fila);
                 OleDbCommandBuilder cb = new OleDbCommandBuilder(Adaptador);
@@ -93,13 +95,14 @@ namespace pryMatiasTp3
             }
             else
             {
-                IDLocalidad = 0;
+                Localidad = 0;
                 NombreDeLocalidad = "";
             }
         }
 
 
-        public void Buscar(Int32 LocalidadBusca)
+
+        public void Buscar(Int32 LocalidadBuscar) //procedimieto buscar 
         {
             try
             {
@@ -110,9 +113,9 @@ namespace pryMatiasTp3
                 {
                     while (Lector.Read())
                     {
-                        if (Lector.GetInt32(0) == LocalidadBusca)
+                        if (Lector.GetInt32(0) == LocalidadBuscar)
                         {
-                            IDLocalidad = Lector.GetInt32(0);
+                            Localidad = Lector.GetInt32(0);
                         }
                     }
                 }
@@ -123,6 +126,12 @@ namespace pryMatiasTp3
                 MessageBox.Show(e.ToString());
             }
         }
+
+        public DataTable getAll()//para que volvemos a la tabla 
+        {
+            return Tabla;
+        }
+
 
 
     }
